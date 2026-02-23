@@ -1,0 +1,28 @@
+#canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hud {
+  position: fixed;
+  bottom: 16px;
+  color: #fff;
+  font-family: monospace;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 14px;
+  border-radius: 6px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hud-left {
+  left: 16px;
+}
+
+.hud-right {
+  right: 16px;
+}
