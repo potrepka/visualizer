@@ -23,12 +23,23 @@ function App() {
 
   const { name, component: CurrentVisualizer } = scenes[index]
 
+  const goUp = () => setIndex((i) => (i + 1) % scenes.length)
+  const goDown = () => setIndex((i) => (i - 1 + scenes.length) % scenes.length)
+
   return (
     <div id="canvas-container">
       <Canvas camera={{ position: [5, 5, 5], fov: 50 }}>
         <OrbitControls keys={{ LEFT: '', UP: '', RIGHT: '', BOTTOM: '' }} />
         <CurrentVisualizer key={index} />
       </Canvas>
+      <div className="mobile-nav">
+        <button className="mobile-nav-btn" onClick={goUp} type="button">
+          ↑
+        </button>
+        <button className="mobile-nav-btn" onClick={goDown} type="button">
+          ↓
+        </button>
+      </div>
       <div className="hud hud-left">Use ↑/↓ to browse</div>
       <div className="hud hud-right">
         {name} ({index + 1}/{scenes.length})
