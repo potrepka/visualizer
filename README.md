@@ -14,7 +14,7 @@ bun run dev
 ## Controls
 
 - **Arrow Up / Arrow Down** — cycle through scenes
-- **Mouse** — orbit, zoom, pan
+- **Mouse / Pointer** — orbit, zoom, pan
 
 ## License
 
