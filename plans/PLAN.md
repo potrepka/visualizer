@@ -1,18 +1,17 @@
-# Plan: Create 99 3D Scene Components + Register in index.ts
+# Plan: Create 99 3D Scene Components in `src/components/` + Register in `src/scenes.ts`
 
 ## Context
 
-A previous session generated scene component files in `src/components/`, but they've all been lost. Only `EmptyScene.tsx` remains (in `src/`). This plan creates 99 scene components one at a time and registers them.
+A previous session generated scene component files in `src/components/`, but they've all been lost. Only `EmptyScene.tsx` remains (in `src/`). This plan creates 99 scene components one at a time in `src/components/` and registers them in `src/scenes.ts`.
 
 ## Pattern
 
 Each component is a React Three Fiber scene exported as a default function component (`FC` with no props). Components use:
 
-- `three`, `@react-three/fiber` (useFrame, useThree), `@react-three/drei` (Grid, etc.)
-- Procedural geometry only (box, sphere, cylinder, plane, torus, cone, etc.) — no model loading
-- Helper sub-components for reusable pieces
-- Optional: SceneSetup component for fog/background, useFrame for animation, instancedMesh for particles
-- Target complexity: ~100-350 lines
+- `three`, `@react-three/fiber` (useFrame, useThree), and `@react-three/drei`
+- Procedural geometry only (no model loading)
+- Reusable helper sub-components for DRY code, but all in the same file (no imports from other files)
+- Optional: animation using `useFrame` (not required, but encouraged for visual interest)
 
 ## Files to Modify
 
@@ -129,11 +128,19 @@ Each file: `src/components/<ComponentName>.tsx`
 1. Generate each component **one at a time** (not batched) as a separate Write call
 2. Each component should be a self-contained, visually rich 3D scene that demonstrates a unique environment or structure
 3. After all 99 are created, update `src/scenes.ts` to import and register all 100 entries (1 existing + 99 new)
-4. Run `npx tsc --noEmit` to verify no TypeScript errors
+4. At the end, run all verification steps to confirm the code is correct and the scenes render properly:
+
+- `bun run lint` — confirm code has no lint errors
+- `bun run format` — confirm code is properly formatted
+- `bun run typecheck` - confirm code has no TypeScript errors
+- `bun run build` — confirm production build succeeds
+- `bun test` — confirm all tests pass
 
 ## Verification
 
-1. `npx tsc --noEmit` — confirm no TypeScript errors
-2. `npm run build` — confirm production build succeeds
-3. `npm run dev` — manually verify scenes render and cycle with arrow keys
-4. Confirm HUD shows 100 total scenes
+1. `bun run lint` — confirm no lint errors
+2. `bun run format:check` — confirm code is properly formatted
+3. `bun run typecheck` - confirm no TypeScript errors
+4. `npm run build` — confirm production build succeeds
+5. `npm run dev` — manually verify scenes render and cycle with arrow keys
+6. Confirm HUD shows 100 total scenes
