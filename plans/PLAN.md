@@ -141,6 +141,6 @@ Each file: `src/components/<ComponentName>.tsx`
 1. `bun run lint` — confirm no lint errors
 2. `bun run format:check` — confirm code is properly formatted
 3. `bun run typecheck` - confirm no TypeScript errors
-4. `npm run build` — confirm production build succeeds
-5. `npm run dev` — manually verify scenes render and cycle with arrow keys
+4. `bun run build` — confirm production build succeeds
+5. `bun run dev` — manually verify scenes render and cycle with arrow keys
 6. Confirm HUD shows 100 total scenes
